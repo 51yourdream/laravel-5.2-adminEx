@@ -4,18 +4,18 @@
 @section('pageCss')
 
     {{--当前页面独有的样式--}}
-@show
+@stop
 
 @section('heasJs')
     {{--当前页面独有 head js样式--}}
-@show
+@stop
 
 @section('wrapper')
     主要内容区
-@show
+@stop
 
 
 
 @section('pageJs')
     {{--当前页面独有 js样式--}}
-@show
+@stop

@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     @include('_layout.css')
+    @include('_layout.common')
     @yield('pageCss')
     @yield('headJs')
 </head>
@@ -52,22 +53,13 @@
                 <li class="menu-list"><a href=""><i class="fa fa-laptop"></i> <span>权限管理</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="blank_page.html">制定规则perssion</a></li>
-                        <li><a href="boxed_view.html"> Boxed Page</a></li>
+                        <li><a href="boxed_view.html">角色role</a></li>
                         <li><a href="leftmenu_collapsed_view.html"> Sidebar Collapsed</a></li>
                         <li><a href="horizontal_menu.html"> Horizontal Menu</a></li>
 
                     </ul>
                 </li>
-                <li class="menu-list"><a href=""><i class="fa fa-book"></i> <span>UI Elements</span></a>
-                    <ul class="sub-menu-list">
-                        <li><a href="general.html"> General</a></li>
-                        <li><a href="buttons.html"> Buttons</a></li>
-                        <li><a href="tabs-accordions.html"> Tabs & Accordions</a></li>
-                        <li><a href="typography.html"> Typography</a></li>
-                        <li><a href="slider.html"> Slider</a></li>
-                        <li><a href="panels.html"> Panels</a></li>
-                    </ul>
-                </li>
+                <li class=""><a href="{{URL::to('admin/users')}}"><i class="fa fa-home"></i> <span>管理员管理</span></a></li>
                 <li class="menu-list"><a href=""><i class="fa fa-cogs"></i> <span>Components</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="grids.html"> Grids</a></li>
@@ -341,7 +333,7 @@
                     <li>
                         <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             <img src="{{asset('static/images/photos/user-avatar.png')}}" alt="" />
-                            lipeng
+                            {{Auth::user()->name}}
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
