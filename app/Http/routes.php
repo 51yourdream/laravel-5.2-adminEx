@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/mb', function () {
+    return Redirect::to('mb/index.html',301);
+});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -27,9 +30,16 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    // 认证路由...
+    Route::get('auth/login',['uses'=> 'Auth\AuthController@getLogin','as'=>'auth.login']);
+    Route::post('auth/login', ['uses'=>'Auth\AuthController@postLogin','as'=>'auth.login']);
+    Route::get('auth/logout', ['uses'=>'Auth\AuthController@logout','as'=>'auth.logout']);
+// 注册路由...
+    Route::get('auth/register', ['uses'=>'Auth\AuthController@getRegister','as'=>'auth.register']);
+    Route::post('auth/register', ['uses'=>'Auth\AuthController@postRegister','as'=>'auth.register']);
 });
 
 Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
-    Route::controller('index','IndexController');
+
+    Route::resource('index','IndexController');
 });

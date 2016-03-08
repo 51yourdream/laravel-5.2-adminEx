@@ -42,16 +42,16 @@
                 <ul class="nav nav-pills nav-stacked custom-nav">
                     <li><a href="#"><i class="fa fa-user"></i> <span>Profile</span></a></li>
                     <li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
-                    <li><a href="#"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a></li>
+                    <li><a href="{{URL::route('auth.logout')}}"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a></li>
                 </ul>
             </div>
 
             <!--sidebar nav start 导航菜单-->
             <ul class="nav nav-pills nav-stacked custom-nav">
-                <li class="active"><a href="index.html"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
-                <li class="menu-list"><a href=""><i class="fa fa-laptop"></i> <span>Layouts</span></a>
+                <li class="active"><a href="index.html"><i class="fa fa-home"></i> <span>首页</span></a></li>
+                <li class="menu-list"><a href=""><i class="fa fa-laptop"></i> <span>权限管理</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="blank_page.html"> Blank Page</a></li>
+                        <li><a href="blank_page.html">制定规则perssion</a></li>
                         <li><a href="boxed_view.html"> Boxed Page</a></li>
                         <li><a href="leftmenu_collapsed_view.html"> Sidebar Collapsed</a></li>
                         <li><a href="horizontal_menu.html"> Horizontal Menu</a></li>
@@ -341,13 +341,13 @@
                     <li>
                         <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             <img src="{{asset('static/images/photos/user-avatar.png')}}" alt="" />
-                            John Doe
+                            lipeng
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
                             <li><a href="#"><i class="fa fa-user"></i>  Profile</a></li>
                             <li><a href="#"><i class="fa fa-cog"></i>  Settings</a></li>
-                            <li><a href="#"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                            <li><a href="{{URL::route('auth.logout')}}"><i class="fa fa-sign-out"></i>退出</a></li>
                         </ul>
                     </li>
 

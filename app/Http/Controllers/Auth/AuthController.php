@@ -28,8 +28,8 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
-
+    protected $redirectTo = '/admin/index';          //登陆成功后跳转位置
+    protected $redirectAfterLogout = "/admin/index"; //退出后跳转位置
     /**
      * Create a new authentication controller instance.
      *
@@ -37,7 +37,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->middleware($this->guestMiddleware(), ['except' => 'logout','getLogout']);
     }
 
     /**
