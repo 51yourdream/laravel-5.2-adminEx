@@ -10,9 +10,9 @@
     {{--当前页面独有 head js样式--}}
 @stop
 
-@section('wrapper')
-    主要内容区
-@stop
+{{--@section('wrapper')--}}
+    {{----}}
+{{--@stop--}}
 
 
 

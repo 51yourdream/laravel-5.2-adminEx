@@ -52,7 +52,7 @@
                 <li class="active"><a href="index.html"><i class="fa fa-home"></i> <span>首页</span></a></li>
                 <li class="menu-list"><a href=""><i class="fa fa-laptop"></i> <span>权限管理</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="blank_page.html">制定规则perssion</a></li>
+                        <li><a href="{{URL::to('admin/permissions')}}">制定规则permission</a></li>
                         <li><a href="boxed_view.html">角色role</a></li>
                         <li><a href="leftmenu_collapsed_view.html"> Sidebar Collapsed</a></li>
                         <li><a href="horizontal_menu.html"> Horizontal Menu</a></li>

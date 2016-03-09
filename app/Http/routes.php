@@ -43,4 +43,6 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
 
     Route::resource('index','IndexController');
     Route::resource('users','UserController');
+    Route::resource('permissions','PermissionController');
+    Route::resource('roles','RoleController');
 });
