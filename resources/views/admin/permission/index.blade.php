@@ -36,7 +36,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php dd($permissions);?>
                             @if(!empty($permissions))
                             @foreach($permissions as $key=>$permission)
                             <tr>

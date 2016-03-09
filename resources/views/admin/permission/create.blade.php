@@ -15,40 +15,25 @@
         <div class="col-lg-6">
             <section class="panel">
                 <header class="panel-heading">
-                    <a href="{{URL::to('admin/users')}}" class="btn btn-default">返回列表</a>
+                    <a href="{{URL::to('admin/permissions')}}" class="btn btn-default">返回列表</a>
                 </header>
                 <div class="panel-body">
-                    <form role="form" method="post" action="{{URL::to('admin/users')}}">
+                    <form role="form" method="post" action="{{URL::to('admin/permissions')}}">
                         {!! csrf_field() !!}
                         <div class="form-group">
-                            <label for="exampleInputEmail1">用户名</label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="用户名">
+                            <label for="name">规则名称</label>
+                            <input type="text" class="form-control" name="name" id="name" value="{{old('name')}}" placeholder="规则名称">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">邮箱</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="邮箱">
+                            <label for="label">标签</label>
+                            <input type="text" class="form-control" name="label" id="label" value="{{old('label')}}" placeholder="标签">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">密码</label>
-                            <input type="password" class="form-control" name="password" id="password" placeholder="密码">
+                            <label for="description">描述</label>
+                            <textarea name="description" class="form-control" id="description">{{old('description')}}</textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">确认密码</label>
-                            <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="确认密码">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputFile">File input</label>
-                            <input type="file" id="exampleInputFile">
-                            <p class="help-block">Example block-level help text here.</p>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Check me out
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">添加</button>
                     </form>
-
                 </div>
             </section>
         </div>
