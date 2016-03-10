@@ -24,7 +24,7 @@ class PermissionController extends Controller
     //get展示单条数据
     public function show($id)
     {
-
+        return view('admin.permission.show')->withPermission(Permission::find($id));
     }
     //get添加表单
     public function create()
@@ -43,7 +43,7 @@ class PermissionController extends Controller
         $permission->name = Input::get('name');
         $permission->label = Input::get('label');
         $permission->description = Input::get('description');
-        Request::flash();
+        $request->flash();
         if($permission->save()){
             return Redirect::to('admin/permissions');
         }else{
@@ -54,18 +54,31 @@ class PermissionController extends Controller
     //get 修改表单展示
     public function edit($id)
     {
-
+        return view('admin.permission.edit')->withPermission(Permission::find($id));
     }
 
     //PUT/PATCH 修改保存
-    public function update()
+    public function update(Request $request,$id)
     {
-
+        $this->validate($request,[
+            'name'=>'required|unique:permissions,name,'.$id.'|max:225',
+            'label'=>'required'
+        ]);
+        $permission = new Permission();
+        $permission->name = Input::get('name');
+        $permission->label = Input::get('label');
+        $permission->description = Input::get('description');
+        if($permission->where('id',$id)->update(Input::except('_method','_token'))){
+            return Redirect::to('admin/permissions');
+        }else{
+            return Redirect::back()->withInput(Input::all())->withErrors('保存失败!');
+        }
     }
 
     //DELETE 删除
     public function destroy($id)
     {
-
+        Permission::find($id)->delete();
+        return Redirect::to('admin/permissions');
     }
 }

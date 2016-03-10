@@ -15,7 +15,7 @@
         <div class="col-sm-12">
             <section class="panel">
                 <header class="panel-heading">
-                    <a href="{{URL::to('admin/permissions/create')}}" class="btn btn-info">添加许可规则</a>
+                    <a href="{{URL::to('admin/roles/create')}}" class="btn btn-info">添加角色</a>
                         <span class="tools pull-right">
                             <a href="javascript:;" class="fa fa-chevron-down"></a>
                             <a href="javascript:;" class="fa fa-times"></a>
@@ -36,19 +36,20 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @if(!empty($permissions))
-                            @foreach($permissions as $key=>$permission)
+                            @if(!empty($roles))
+                            @foreach($roles as $key=>$role)
                             <tr>
                                 <td><input type="checkbox" name=""></td>
-                                <td>{{$permission->id}}</td>
-                                <td class="">{{$permission->name}}</td>
-                                <td class="">{{$permission->label or '-'}}</td>
-                                <td class="">{{$permission->created_at}}</td>
-                                <td class="">{{$permission->updated_at}}</td>
+                                <td>{{$role->id}}</td>
+                                <td class="">{{$role->name}}</td>
+                                <td class="">{{$role->label or '-'}}</td>
+                                <td class="">{{$role->created_at}}</td>
+                                <td class="">{{$role->updated_at}}</td>
                                 <td>
-                                    <a href="{{URL::to('admin/permissions').'/'.$permission->id}}" class="btn btn-sm btn-info margin-top-5">查看详情</a>
-                                    <a href="{{URL::to('admin/permissions').'/'.$permission->id.'/edit'}}" class="btn btn-sm btn-success margin-top-5">修改</a>
-                                    <form action="{{ URL('admin/permissions/'.$permission->id)}}" method="POST" style="display: inline;">
+                                    <a href="{{URL::to('admin/roles').'/'.$role->id}}" class="btn btn-sm btn-info margin-top-5">查看详情</a>
+                                    <div type="2" title="查看规则" shadeClose=0 shade="0.5" with="600px" height="400px" content="{{asset('admin/permissionRole/index?id=').$role->id}}" class="btn btn-sm btn-warning margin-top-5" role="layer">查看规则</div>
+                                    <a href="{{URL::to('admin/roles').'/'.$role->id.'/edit'}}" class="btn btn-sm btn-success margin-top-5">修改</a>
+                                    <form action="{{ URL('admin/roles/'.$role->id)}}" method="POST" style="display: inline;">
                                         <input name="_method" type="hidden" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <button type="submit" class="btn btn-sm btn-danger margin-top-5">删除</button>
@@ -67,7 +68,7 @@
         </div>
     </div>
 
-    <?php echo $permissions->render(); ?>
+    <?php echo $roles->render(); ?>
 @stop
 
 

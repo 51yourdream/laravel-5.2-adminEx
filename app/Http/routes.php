@@ -18,6 +18,9 @@ Route::get('/', function () {
 Route::get('/mb', function () {
     return Redirect::to('mb/index.html',301);
 });
+Route::get('/layer', function () {
+    return Redirect::to('layer-v2.1',301);
+});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -45,4 +48,5 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
     Route::resource('users','UserController');
     Route::resource('permissions','PermissionController');
     Route::resource('roles','RoleController');
+    Route::controller('permissionRole','PermissionRoleController');
 });

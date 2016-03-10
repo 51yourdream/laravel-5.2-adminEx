@@ -6,7 +6,8 @@
 <script src="{{asset('static/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('static/js/modernizr.min.js')}}"></script>
 <script src="{{asset('static/js/jquery.nicescroll.js')}}"></script>
-
+{{--layer弹框--}}
+<script src="{{asset('static/layer/layer.js')}}"></script>
 
 <!--common scripts for all pages-->
 <script src="{{asset('static/js/scripts.js')}}"></script>
