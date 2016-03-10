@@ -15,4 +15,7 @@ class Role extends Model
     {
         return $this->permissions()->save($permission);
     }
+    public function hasManyPermissions(){
+        return $this->hasMany('permission_role','role_id','id');
+    }
 }

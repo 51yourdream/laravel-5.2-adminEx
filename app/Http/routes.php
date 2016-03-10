@@ -48,5 +48,5 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
     Route::resource('users','UserController');
     Route::resource('permissions','PermissionController');
     Route::resource('roles','RoleController');
-    Route::controller('permissionRole','PermissionRoleController');
+    Route::controller('givePermission','GivePermissionController');
 });
