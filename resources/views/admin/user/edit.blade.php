@@ -18,25 +18,15 @@
                     <a href="{{URL::to('admin/users')}}" class="btn btn-default">返回列表</a>
                 </header>
                 <div class="panel-body">
-                    @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                     <form role="form" method="post" action="{{URL::to('admin/users')}}">
                         {!! csrf_field() !!}
                         <div class="form-group">
                             <label for="exampleInputEmail1">用户名</label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="用户名">
+                            <input type="text" class="form-control" name="name" id="name" value="{{$user->name or '用户名'}}" placeholder="用户名">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">邮箱</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="邮箱">
+                            <input type="email" class="form-control" name="email" id="email" value="{{$user->email or '邮箱'}}" placeholder="邮箱">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">密码</label>
@@ -46,7 +36,13 @@
                             <label for="exampleInputPassword1">确认密码</label>
                             <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="确认密码">
                         </div>
-                        <button type="submit" class="btn btn-primary">添加</button>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="changePassword" value="1">
+                                是否修改密码
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">修改</button>
                     </form>
 
                 </div>
@@ -54,6 +50,8 @@
         </div>
     </div>
 @stop
+
+
 
 @section('pageJs')
     {{--当前页面独有 js样式--}}

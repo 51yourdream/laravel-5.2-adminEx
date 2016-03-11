@@ -18,6 +18,16 @@
                     <a href="{{URL::to('admin/roles')}}" class="btn btn-default">返回列表</a>
                 </header>
                 <div class="panel-body">
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form role="form" method="post" action="{{URL::to('admin/roles')}}">
                         {!! csrf_field() !!}
                         <div class="form-group">

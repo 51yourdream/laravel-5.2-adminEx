@@ -46,8 +46,8 @@
                                 <td class="">{{$role->created_at}}</td>
                                 <td class="">{{$role->updated_at}}</td>
                                 <td>
-                                    <a href="{{URL::to('admin/roles').'/'.$role->id}}" class="btn btn-sm btn-info margin-top-5">查看权限</a>
-                                    <div type="2" title="查看权限" shadeClose=0 shade="0.5" with="600px" height="400px" content="{{asset('admin/givePermission/index?id=').$role->id}}" class="btn btn-sm btn-warning margin-top-5" role="layer">查看规则</div>
+                                    <div type="2" title="查看权限" shadeClose=0 shade="0.5" with="600px" height="400px" content="{{URL::to('admin/roles').'/'.$role->id}}" class="btn btn-sm btn-info margin-top-5" role="layer">查看详情</div>
+                                    <div type="2" title="查看详情" shadeClose=0 shade="0.5" with="600px" height="400px" content="{{URL::to('admin/givePermission/index?id=').$role->id}}" class="btn btn-sm btn-warning margin-top-5" role="layer">查看规则</div>
                                     <a href="{{URL::to('admin/roles').'/'.$role->id.'/edit'}}" class="btn btn-sm btn-success margin-top-5">修改</a>
                                     <form action="{{ URL('admin/roles/'.$role->id)}}" method="POST" style="display: inline;">
                                         <input name="_method" type="hidden" value="DELETE">

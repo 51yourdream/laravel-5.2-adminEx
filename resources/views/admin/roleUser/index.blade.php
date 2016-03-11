@@ -14,7 +14,7 @@
     <div class="col-sm-12">
         <section class="panel">
             {{--<header class="panel-heading">--}}
-                {{--<a href="{{URL::to('admin/permissions/create')}}" class="btn btn-info">添加许可规则</a>--}}
+                {{--<a href="{{URL::to('admin/roles/create')}}" class="btn btn-info">添加许可规则</a>--}}
                         {{--<span class="tools pull-right">--}}
                             {{--<a href="javascript:;" class="fa fa-chevron-down"></a>--}}
                             {{--<a href="javascript:;" class="fa fa-times"></a>--}}
@@ -23,32 +23,28 @@
             <div class="panel-body">
                 <section id="unseen">
                     <table class="table table-bordered table-striped table-condensed">
-                        {{--<thead>--}}
-                        {{--<tr>--}}
-                            {{--<th>选择</th>--}}
-                            {{--<th>ID</th>--}}
-                            {{--<th class="">规则名称</th>--}}
-                            {{--<th class="">标签</th>--}}
-                            {{--<th class="">添加时间</th>--}}
-                            {{--<th class="">修改时间</th>--}}
-                            {{--<th class="">操作</th>--}}
-                        {{--</tr>--}}
-                        {{--</thead>--}}
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th class="">规则名称</th>
+                            <th class="">标签</th>
+                            <th class="">操作</th>
+                        </tr>
+                        </thead>
                         <tr>
                             <td colspan="7">目前拥有的权限</td>
                         </tr>
                         <tbody>
-                        @if(!empty($not_in_permissions))
-                            @foreach($not_in_permissions as $key=>$permission)
+                        @if(!empty($not_in_roles))
+                            @foreach($not_in_roles as $key=>$role)
                                 <tr>
-                                    <td><input type="checkbox" name=""></td>
-                                    <td>{{$permission->id}}</td>
-                                    <td class="">{{$permission->name}}</td>
-                                    <td class="">{{$permission->label or '-'}}</td>
-                                    {{--<td class="">{{$permission->created_at}}</td>--}}
-                                    {{--<td class="">{{$permission->updated_at}}</td>--}}
+                                    <td>{{$role->id}}</td>
+                                    <td class="">{{$role->name}}</td>
+                                    <td class="">{{$role->label or '-'}}</td>
+                                    {{--<td class="">{{$role->created_at}}</td>--}}
+                                    {{--<td class="">{{$role->updated_at}}</td>--}}
                                     <td>
-                                        <a href="{{URL::to('admin/givePermission/delete-permission').'?pid='.$permission->id.'&rid='.$id}}" class="btn btn-xs btn-warning margin-top-5">取消授权</a>
+                                        <a href="{{URL::to('admin/giveRole/delete-role').'?rid='.$role->id.'&uid='.$id}}" class="btn btn-xs btn-warning margin-top-5">取消授权</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -60,17 +56,16 @@
                             <td colspan="7">暂时未拥有的权限</td>
                         </tr>
                         <tbody>
-                        @if(!empty($in_permissions))
-                            @foreach($in_permissions as $key=>$permission)
+                        @if(!empty($in_roles))
+                            @foreach($in_roles as $key=>$role)
                                 <tr>
-                                    <td><input type="checkbox" name=""></td>
-                                    <td>{{$permission->id}}</td>
-                                    <td class="">{{$permission->name}}</td>
-                                    <td class="">{{$permission->label or '-'}}</td>
-                                    {{--<td class="">{{$permission->created_at}}</td>--}}
-                                    {{--<td class="">{{$permission->updated_at}}</td>--}}
+                                    <td>{{$role->id}}</td>
+                                    <td class="">{{$role->name}}</td>
+                                    <td class="">{{$role->label or '-'}}</td>
+                                    {{--<td class="">{{$role->created_at}}</td>--}}
+                                    {{--<td class="">{{$role->updated_at}}</td>--}}
                                     <td>
-                                        <a href="{{URL::to('admin/givePermission/assign-permission').'?pid='.$permission->id.'&rid='.$id}}" class="btn btn-xs btn-info margin-top-5">授权</a>
+                                        <a href="{{URL::to('admin/giveRole/assign-role').'?rid='.$role->id.'&uid='.$id}}" class="btn btn-xs btn-info margin-top-5">分配授权</a>
                                     </td>
                                 </tr>
                             @endforeach

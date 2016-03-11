@@ -14,7 +14,6 @@ class IndexController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('web');
         $this->middleware('auth');
     }
     //首页

@@ -42,11 +42,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('auth/register', ['uses'=>'Auth\AuthController@postRegister','as'=>'auth.register']);
 });
 
-Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
-
+Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware' => ['web']],function(){
     Route::resource('index','IndexController');
     Route::resource('users','UserController');
     Route::resource('permissions','PermissionController');
     Route::resource('roles','RoleController');
     Route::controller('givePermission','GivePermissionController');
+    Route::controller('giveRole','GiveRoleController');
 });
