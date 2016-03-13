@@ -34,16 +34,16 @@
                 {{--</div>--}}
                 <ul class="list-group">
                     <li class="list-group-item list-group-item-success">
-                        <span><em>规则名称：</em></span>
-                        <span>{{$role->name}}</span>
+                        <span><em>用户名：</em></span>
+                        <span>{{$user->name}}</span>
                     </li>
                     <li class="list-group-item list-group-item-info">
-                        <span><em>标签：</em></span>
-                        <span>{{$role->label}}</span>
+                        <span><em>邮箱：</em></span>
+                        <span>{{$user->email}}</span>
                     </li>
                     <li class="list-group-item list-group-item-warning">
-                        <span><em>详情描述：</em></span>
-                        <span>{{$role->description}}</span>
+                        <span><em>角色：</em></span>
+                        <span>{{$role_name}}</span>
                     </li>
                 </ul>
             </section>

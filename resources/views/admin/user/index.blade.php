@@ -30,7 +30,7 @@
                                 <th>ID</th>
                                 <th class="">用户名</th>
                                 <th class="">邮箱</th>
-                                <th class="">超级管理员</th>
+                                {{--<th class="">超级管理员</th>--}}
                                 <th class="">所属角色</th>
                                 <th class="">创建时间</th>
                                 <th class="">操作</th>
@@ -43,11 +43,11 @@
                                 <td>{{$user->id}}</td>
                                 <td class="">{{$user->name}}</td>
                                 <td class="">{{$user->email}}</td>
-                                <td class=""><span class="btn btn-xs btn-danger">是</span></td>
-                                <td class=""><span class="btn btn-xs btn-info">系统管理员</span></td>
+                                {{--<td class=""><span class="btn btn-xs btn-danger">是</span></td>--}}
+                                <td class=""><span class="btn btn-xs btn-info">{{\App\User::getRoleName($user->id)}}</span></td>
                                 <td class="">{{$user->created_at}}</td>
                                 <td>
-                                    <div type="2" title="查看权限" shadeClose=0 shade="0.5" with="600px" height="400px" content="{{URL::to('admin/users').'/'.$user->id.'/edit'}}" class="btn btn-sm btn-info margin-top-5" role="layer">查看信息</div>
+                                    <div type="2" title="查看信息" shadeClose=0 shade="0.5" with="600px" height="400px" content="{{URL::to('admin/users').'/'.$user->id}}" class="btn btn-sm btn-info margin-top-5" role="layer">查看信息</div>
                                     <a href="{{URL::to('admin/users').'/'.$user->id.'/edit'}}" class="btn btn-sm btn-success margin-top-5">修改信息</a>
                                     <div type="2" title="查看权限" shadeClose=0 shade="0.5" with="600px" height="400px" content="{{URL::to('admin/giveRole/index?id=').$user->id}}" class="btn btn-sm btn-warning margin-top-5" role="layer">配置权限</div>
                                     <a href="" class="btn btn-sm btn-danger margin-top-5">禁用</a>

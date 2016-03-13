@@ -77,8 +77,8 @@ return [
     ],
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
-    'unique'               => 'The :attribute has already been taken.',
-    'url'                  => 'The :attribute format is invalid.',
+    'unique'               => ':attribute 已经存在了.',
+    'url'                  => ':attribute 必须是合法的URL',
 
     /*
     |--------------------------------------------------------------------------

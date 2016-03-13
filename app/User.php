@@ -48,4 +48,18 @@ class User extends Authenticatable
             Role::whereName($role)->firstOrFail()
         );
     }
+
+    public function hasOneRoleUser()
+    {
+        return $this->hasOne('role_user', 'user_id','id');
+    }
+    public static function getRoleName($id){
+        $role_user = RoleUser::where('user_id','=',$id)->first();
+        if($role_user){
+            return Role::find($role_user->role_id)->name;
+        }else{
+            return '未分配角色';
+        }
+
+    }
 }

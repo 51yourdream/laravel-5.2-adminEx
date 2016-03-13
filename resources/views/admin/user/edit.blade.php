@@ -18,7 +18,18 @@
                     <a href="{{URL::to('admin/users')}}" class="btn btn-default">返回列表</a>
                 </header>
                 <div class="panel-body">
-                    <form role="form" method="post" action="{{URL::to('admin/users')}}">
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form role="form" method="post" action="{{URL::to('admin/users').'/'.$user->id}}">
+                        <input type="hidden" name="_method" value="PUT">
                         {!! csrf_field() !!}
                         <div class="form-group">
                             <label for="exampleInputEmail1">用户名</label>

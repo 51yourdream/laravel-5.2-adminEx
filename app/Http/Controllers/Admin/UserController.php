@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Crypt;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -64,6 +65,7 @@ class UserController extends Controller
             $user = new User();
             $user->name = Input::get('name');
             $user->email = Input::get('email');
+            $user->password = bcrypt(Input::get('password')); //给密码加密
             if($user->save()){
                 return Redirect::to('admin/users');
             }else{
@@ -82,7 +84,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        echo '展示 '.$id;
+
+        return view('admin.user.show')->withUser(User::find($id))->withRoleName(User::getRoleName($id));
     }
 
     /**
@@ -105,15 +108,23 @@ class UserController extends Controller
     public function update(Request $request,$id)
     {
         $this->validate($request,[
-            'title'=>'required|unique:pages,title,'.$id.'|max:225',
-            'body'=>'required'
+            'name'=>'required|max:225',
+            'email'=>'required|unique:users,email,'.$id.'|max:225'
         ]);
-        $page = Page::find($id);
-        $page->title = Input::get('title');
-        $page->body = Input::get('body');
-        $page->user_id = 1;//Auth::user()->id;
-        if($page->save()){
-            return Redirect::to('admin');
+        if(Input::get('changePassword')){
+            $this->validate($request,[
+                'password'=>'required|min:6|max:32|confirmed',
+                'password_confirmation'=>'required|min:6'
+            ]);
+        }
+        $user = User::find($id);
+        $user->name = Input::get('name');
+        $user->email = Input::get('email');
+        if(Input::get('changePassword')){
+            $user->password = bcrypt(Input::get('password')); //给密码加密
+        }
+        if($user->save()){
+            return Redirect::to('admin/users');
         }else{
             return Redirect::back()->withInput()->withErrors('保存失败!');
         }
@@ -129,6 +140,6 @@ class UserController extends Controller
     {
         $page = Page::find($id);
         $page->delete();
-        return Redirect::to('admin');
+        return Redirect::to('admin/users');
     }
 }
